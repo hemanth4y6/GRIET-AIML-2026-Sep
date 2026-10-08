@@ -1,3 +1,4 @@
+#Part A 
 import pandas as pd
 import numpy as np
 
@@ -8,6 +9,7 @@ video = df['Video'].to_numpy()
 study = df['Study'].to_numpy()
 games = df['Games'].to_numpy()
 
+#Part B
 print("Total minutes over the thirty days:" , chat.sum() , video.sum() , study.sum() , games.sum())
 
 #mean round to 1 decimal places
@@ -31,10 +33,23 @@ for i in range(len(chat)):
             best = j
     winners.append(names[best])
 
+    '''Alernative for D1
+    for i in range(len(df)):
+        list = np.array([chat[i],video[i],study[i],games[i]])
+        idx = int(list.argmax())
+        print(names[idx])'''
+
 #D2. What share of each day did each app take?    
-    total = sum(day_values)
-    if total > 0:
-        shares = [round(v / total, 2) for v in day_values]
-    else:
-        shares = [0, 0, 0, 0]
-    print(f"Day {i+1}: {names[0]}={shares[0]}, {names[1]}={shares[1]}, {names[2]}={shares[2]}, {names[3]}={shares[3]}")
+
+app_totals = chat + video + study + games 
+
+chat_share = (chat/app_totals)*100
+video_share = (video/app_totals)*100
+study_share = (study/app_totals)*100
+games_share = (games/app_totals)*100
+
+#chatgpt_share = (gpt/app_totals)*100
+
+print("\nDay 1 shares:",
+      round(chat_share[0], 1), round(video_share[0], 1),
+      round(study_share[0], 1), round(games_share[0]))

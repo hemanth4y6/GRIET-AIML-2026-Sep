@@ -1,6 +1,7 @@
 """Day 1 - Debug Challenge 1 of 6"""
 # (something is missing here)
 
+
 APP = "Instagram"
 minutes = []
 
